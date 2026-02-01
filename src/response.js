@@ -400,8 +400,8 @@ function setEpisodes(episodes = []) {
  */
 function detectLocales(infoGroup = { seasonTitle: undefined, seasonId: undefined, epId: undefined, mId: undefined, evaluate: undefined }) {
 	Console.log("☑️ Detect Locales", `seasonTitle: ${infoGroup.seasonTitle}`, `seasonId: ${infoGroup.seasonId}`, `epId: ${infoGroup.epId}`, `mId: ${infoGroup.mId}`);
-	if (infoGroup.seasonTitle) infoGroup.locales = detectSeasonTitle(infoGroup.seasonTitle) // 有标题先测标题
-	else if (infoGroup.mId) infoGroup.locales = detectMId(infoGroup.mId); // 无标题再测 mId
+	if (infoGroup.seasonTitle) infoGroup.locales = detectSeasonTitle(infoGroup.seasonTitle); // 有标题先测标题
+	if (infoGroup.mId) infoGroup.locales = detectMId(infoGroup.mId); // 无标题再测 mId
 	if (infoGroup.locales.length === 0) { // infoGroup.locales 为空再测 evaluate
 		if (infoGroup.seasonTitle && infoGroup.evaluate) infoGroup.locales = detectTraditional(infoGroup.seasonTitle, infoGroup.evaluate);
 	}
